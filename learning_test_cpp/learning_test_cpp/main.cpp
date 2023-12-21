@@ -1,70 +1,63 @@
 //
 //  main.cpp
-//  Test pointer
+//  learning_test_cpp
 //
-//  Created by walle on 19/12/2023.
+//  Created by walle on 21/12/2023.
 //
-
-#include <iostream>
 
 #include "main.hpp"
 
-const double mon_pié = 3.14159; // d é f i n i t i o n .
-std::string emptys{'z'};
-int isemptys= emptys.begin() == emptys.end();
-namespace test {int i=2500;}
-//using test::i; // 2e définition de i or i a été déjà définie.
-int main(int argc, const char * argv[]) {
-         std::cout << '\\' << std::endl;
-    std::cout << isemptys << std::endl;
-    std::cout << "2 * 4 - 6 / 2 = " << 2 * 4 - 6 / 2 << std::endl;
-    int réponse { 42 };
-      std::cout << "La réponse à la Grande Question est " << réponse << std::endl;
-    double weight1 = 122.03;
-    int weight2 = static_cast<int>(weight1);
-    std::cout << "i  : " << test::i << std::endl;
 
-    int q = 5;
-    int *const p = &q;
-    int *const q2  = p;
-    
-    
-       //Valid
-       *p = 7;
-    std::cout << q << std::endl;
-    std::cout << *p << std::endl;
-    std::cout << p << std::endl;
-    std::cout << &q << std::endl;
-     
-    *q2 = 15;
-    
-        //Compilation error
-    std::cout << &q2 << std::endl;
-    std::cout << q2 << std::endl;
-    std::cout << *q2 << std::endl;
 
-     int const k  = 24;
+void changeValOfPointerOfConstantPointerOfConstantInt(){
+    int const k  = 24;
     int const * const pk = &k;
     int const * const * pz= &pk;
     
     std::cout << "&pz: " << &pz << std::endl;
     
+    std::cout << " pz == &pk " << std::endl;
     std::cout << "pz: " << pz << std::endl;
     std::cout << "&pk: " << &pk << std::endl;
     
+    std::cout << " pk == &k == $pz  " << std::endl;
     std::cout << "pk: " << pk << std::endl;
     std::cout << "&k : " << &k << std::endl;
     std::cout << "*pz: " << *pz << std::endl;
 
     std::cout << "*pk: " << *pk << std::endl;
+    std::cout << "**pz: " << *pz << std::endl;
     
-    pz = &q2;
+    // **pz = 2 -> error because int is const
+    
+    // then if you want to hack the int const * const * pz variable
+    // here we create a new pointer q2 of type int * const q2 this replace the type int const *const of pointer pk pointed by pz
+    int q = 0;
+    int * const q2 = &q;
+    // here u can change the value of pz by giving him the address of int * const p that replace the old address of int const * const pk variable
+    pz =  &q2;
+    // now we can change the value of  int const * const * pz even if the the int is declared const by changing the value of q2 we can't modifie directly pz so **pz is forbidden but *q2 = is ok
     *q2 = 284;
+    // and we check the value of ** pz
     std::cout << "**pz  : " << **pz << std::endl;
+    
+}
 
-    int t [] = { 5 , 4 , 3 , 2 , 1 } ; // t a b l e a u de 5 e n t i e r s , m o d i f i a bl e , non d é p l a ç a b l e
-    std::cout << "t  : " << t << std::endl;
-    std::cout << "&t  : " << &t << std::endl;
+void  stringIsEmpty (std::string& chaine ){
+
+    std::cout
+    << "get size of the string : " << chaine.size() << ""
+    << " then test first char [" << *chaine.begin() << "]"
+    << "equals to last  char [" << *chaine.end()
+    << "] result : "
+    << (chaine.begin() == chaine.end())
+    << std::endl;
+}
+
+int main(int argc, const char * argv[]) {
+    std::string emptystring = "";
+    //stringIsEmpty(emptystring);
+    changeValOfPointerOfConstantPointerOfConstantInt();
 
 
     return 0;
