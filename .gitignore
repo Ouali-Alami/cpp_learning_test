@@ -33,4 +33,5 @@
 
 # XCode files
 *.xcodeproj/
-DerivedData/
+DerivedData
+learning_test_cpp.xcodeproj/
