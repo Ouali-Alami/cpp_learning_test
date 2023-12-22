@@ -7,9 +7,8 @@
 
 #ifndef main_hpp
 #define main_hpp
-#include <iostream>
 #include <string>
-#include<vector>
+
 
 extern const double mon_pi;
 namespace test {
