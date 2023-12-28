@@ -12,11 +12,13 @@
 
 int main(int argc, const char * argv[]) {
     //stringIsEmpty("");
-    changeValOfPointerOfConstantPointerOfConstantInt();
-    getSizeOfArrayWithoutTheStdFunction();
-    Chou rouge ( "Chou rouge" ) ;
-    Chou brux ( "Chou de Bruxelles " );
-    //Chou melange = max( rouge , brux );
+  //  changeValOfPointerOfConstantPointerOfConstantInt();
+  //  getSizeOfArrayWithoutTheStdFunction();
+    Person ouali = Person( "Ouali",31 );
+    Person alami = Person( "Alami",33 );
+    Person plusGrande = ouali < alami ;
+    //here no error because i have  we need to override
+
     //int j = max(4,17);
     //double y = max( 2 , 1. 5 ) ; -> error cannot compare double with int
     double z = maxi((double)2,1.5) ;
@@ -26,8 +28,8 @@ int main(int argc, const char * argv[]) {
     double matrice2[2][2] = {2.0,3.0,10.0,11.0};
     Matrice m22 ;
     // here just need to give the first adress of array
-    doSomethingWithAPointerAdress( matrice2 , m22 );
-    std::cout << "Somme=" << m22.detM22 << std::endl;
+   // doSomethingWithAPointerAdress( matrice2 , m22 );
+    //std::cout << "Somme=" << m22.detM22 << std::endl;
 
     return 0;
 }
